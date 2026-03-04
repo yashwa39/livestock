@@ -41,7 +41,7 @@
 
     body {
       font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at top, #e4f3ff 0, #f5f7f4 55%, #edf2f0 100%);
+      background: #f5f7f4;
       color: var(--text-main);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
@@ -77,10 +77,8 @@
     .hero::before {
       content: "";
       position: absolute;
-      inset: -10%;
-      background: radial-gradient(circle at top left, rgba(123, 191, 142, 0.25), transparent 55%),
-        radial-gradient(circle at top right, rgba(116, 185, 255, 0.18), transparent 55%),
-        linear-gradient(135deg, rgba(178, 138, 92, 0.16), transparent 70%);
+      inset: 0;
+      background: linear-gradient(135deg, rgba(123, 191, 142, 0.12), rgba(116, 185, 255, 0.08));
       z-index: -2;
     }
 
@@ -2283,6 +2281,16 @@
         activity: "field2",   // placeholder until you add activity field
         animalId: "field2",   // placeholder – no RFID yet
       },
+      /*
+       * Human‑readable labels for the UI so we never show
+       * generic placeholders like "Field Label 1".
+       */
+      labelMapping: {
+        bodyTemperature: "Average Body Temperature (°C)",
+        shedTemperature: "Shed Temperature (°C)",
+        humidity: "Shed Humidity (%)",
+        airQuality: "Air Quality Index",
+      },
       refreshMs: 60_000, // 1 minute
     };
 
@@ -2481,7 +2489,7 @@
     // Dashboard updates from ThingSpeak
     // -----------------------------
     function updateDashboardFromThingSpeak(data) {
-      const { fieldMapping } = THINGSPEAK_CONFIG;
+      const { fieldMapping, labelMapping = {} } = THINGSPEAK_CONFIG;
       const feeds = data.feeds || [];
       const channel = data.channel || {};
       if (!feeds.length) return;
@@ -2500,11 +2508,13 @@
       const statsAir = computeSeriesStats(airQuality);
       const statsActivity = computeSeriesStats(activity);
 
-      // Key labels from channel metadata
-      const bodyLabel = channel[fieldMapping.bodyTemperature] || "Average body temperature";
-      const shedLabel = channel[fieldMapping.shedTemperature] || "Shed temperature";
-      const humLabel = channel[fieldMapping.humidity] || "Humidity level";
-      const airLabel = channel[fieldMapping.airQuality] || "Air quality";
+      // Prefer explicit friendly labels from config; fall back to channel metadata
+      const bodyLabel =
+        labelMapping.bodyTemperature || channel[fieldMapping.bodyTemperature] || "Average body temperature";
+      const shedLabel =
+        labelMapping.shedTemperature || channel[fieldMapping.shedTemperature] || "Shed temperature";
+      const humLabel = labelMapping.humidity || channel[fieldMapping.humidity] || "Humidity level";
+      const airLabel = labelMapping.airQuality || channel[fieldMapping.airQuality] || "Air quality";
 
       const labelBodyTemp = document.getElementById("labelBodyTemp");
       const labelShedTemp = document.getElementById("labelShedTemp");
