@@ -67,7 +67,7 @@
       flex-direction: column;
     }
 
-    /* Hero / Landing */
+    /* Top hero / landing */
     .hero {
       position: relative;
       padding: 1.25rem 6vw 4rem;
@@ -118,6 +118,13 @@
       justify-content: center;
       position: relative;
       overflow: hidden;
+    }
+
+    .brand-icon-inner::before {
+      content: "";
+      position: absolute;
+      inset: 45% -10% auto;
+      background: linear-gradient(to right, rgba(91, 146, 104, 0.9), rgba(178, 138, 92, 0.9));
     }
 
     .brand-icon-inner span {
@@ -497,59 +504,2579 @@
       color: var(--text-muted);
     }
 
-    /* Overview and dashboard layout and other styles are identical to the previous version
-       (omitted here for brevity in this explanation) */
+    /* System Overview */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr);
+      gap: 1.75rem;
+      align-items: center;
+    }
 
-    /* ... (all the same styles from the earlier generated smart-livestock-hub.html:
-       overview, dashboard shell, sidebar, cards, charts, chatbot, analytics, benefits, footer,
-       and responsive rules) ... */
+    .overview-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
 
+    .overview-points {
+      margin-top: 1rem;
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .overview-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+
+    .overview-point-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: var(--green-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: var(--green-deep);
+      flex-shrink: 0;
+    }
+
+    .overview-point-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .overview-diagram {
+      border-radius: 24px;
+      padding: 1.4rem 1.6rem;
+      background: radial-gradient(circle at top left, rgba(123, 191, 142, 0.12), transparent 60%),
+        radial-gradient(circle at bottom right, rgba(178, 138, 92, 0.1), transparent 60%),
+        #f9fafb;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .diagram-flow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.9rem;
+      align-items: center;
+      position: relative;
+    }
+
+    .diagram-node {
+      border-radius: 16px;
+      padding: 0.7rem 0.8rem;
+      background: #ffffff;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      display: grid;
+      gap: 0.28rem;
+      font-size: 0.78rem;
+      min-height: 82px;
+    }
+
+    .diagram-node-label {
+      font-weight: 600;
+    }
+
+    .diagram-node-desc {
+      color: var(--text-muted);
+    }
+
+    .diagram-node-icon {
+      font-size: 1.05rem;
+      align-self: flex-start;
+    }
+
+    .diagram-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--green-deep);
+      font-size: 1.2rem;
+    }
+
+    .diagram-arrow-1 {
+      left: 24%;
+    }
+
+    .diagram-arrow-2 {
+      left: 49%;
+    }
+
+    .diagram-arrow-3 {
+      left: 74%;
+    }
+
+    /* Dashboard layout */
+    .dashboard-shell {
+      margin-top: 0.25rem;
+      border-radius: 30px;
+      background: rgba(247, 249, 247, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      overflow: hidden;
+      min-height: 520px;
+    }
+
+    .dashboard-sidebar {
+      background: linear-gradient(160deg, #0b2314, #143822);
+      color: #e5f5ea;
+      display: flex;
+      flex-direction: column;
+      padding: 1.4rem 1.1rem;
+      gap: 1rem;
+    }
+
+    .sidebar-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      font-size: 0.78rem;
+    }
+
+    .sidebar-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .sidebar-sub {
+      color: #9caeba;
+    }
+
+    .sidebar-time {
+      margin-top: 0.4rem;
+      padding: 0.45rem 0.6rem;
+      border-radius: 12px;
+      background: rgba(15, 118, 110, 0.32);
+      border: 1px solid rgba(125, 211, 252, 0.3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+    }
+
+    .sidebar-nav {
+      margin-top: 0.6rem;
+      display: grid;
+      gap: 0.2rem;
+      font-size: 0.82rem;
+    }
+
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.5rem 0.55rem;
+      border-radius: 12px;
+      cursor: pointer;
+      color: #cbd5f5;
+      transition: background 0.15s ease, transform 0.1s ease;
+    }
+
+    .sidebar-link span.icon {
+      display: inline-flex;
+      width: 20px;
+      justify-content: center;
+      opacity: 0.82;
+    }
+
+    .sidebar-link.active {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(45, 212, 191, 0.35));
+      color: #f9fafb;
+      transform: translateY(-1px);
+    }
+
+    .sidebar-link:hover:not(.active) {
+      background: rgba(15, 23, 42, 0.5);
+    }
+
+    .sidebar-footer {
+      margin-top: auto;
+      font-size: 0.7rem;
+      color: #9caeba;
+    }
+
+    .sidebar-footer img {
+      border-radius: 12px;
+      margin-top: 0.5rem;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .dashboard-main {
+      display: flex;
+      flex-direction: column;
+      padding: 1.25rem 1.4rem 1.4rem;
+      gap: 0.9rem;
+      background: linear-gradient(135deg, rgba(229, 243, 234, 0.7), rgba(241, 245, 249, 0.9));
+    }
+
+    .dashboard-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.85rem;
+    }
+
+    .dashboard-topbar-left {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .dashboard-top-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .dashboard-top-sub {
+      color: var(--text-muted);
+      font-size: 0.78rem;
+    }
+
+    .dashboard-topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(255, 255, 255, 0.85);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .chip-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--ok);
+      box-shadow: 0 0 0 4px rgba(40, 180, 99, 0.25);
+    }
+
+    .avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--green-soft), var(--brown-soft));
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 0.8rem;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.25);
+    }
+
+    /* Overview cards */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.2rem;
+    }
+
+    .metric-card {
+      border-radius: 18px;
+      padding: 0.7rem 0.8rem;
+      background: rgba(255, 255, 255, 0.95);
+      border: var(--border-subtle);
+      box-shadow: var(--shadow-subtle);
+      font-size: 0.78rem;
+      display: grid;
+      gap: 0.25rem;
+    }
+
+    .metric-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.3rem;
+    }
+
+    .metric-label {
+      font-weight: 500;
+      font-size: 0.78rem;
+    }
+
+    .metric-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    .metric-value {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .metric-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.4rem;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.12rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+    }
+
+    .status-pill.ok {
+      background: rgba(40, 180, 99, 0.12);
+      color: var(--ok);
+    }
+
+    .status-pill.warn {
+      background: rgba(255, 182, 72, 0.14);
+      color: var(--warning);
+    }
+
+    .status-pill.danger {
+      background: rgba(225, 91, 91, 0.12);
+      color: var(--danger);
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: currentColor;
+    }
+
+    /* Dashboard middle content */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 0.9rem;
+      margin-top: 0.2rem;
+      flex: 1;
+    }
+
+    .panel {
+      border-radius: 20px;
+      padding: 0.85rem 0.9rem;
+      background: rgba(255, 255, 255, 0.98);
+      border: var(--border-subtle);
+      box-shadow: var(--shadow-subtle);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      min-height: 0;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.8rem;
+      font-size: 0.8rem;
+    }
+
+    .panel-title {
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .panel-subtitle {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .panel-tag {
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .chart-wrapper {
+      position: relative;
+      flex: 1;
+      min-height: 180px;
+    }
+
+    .env-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.6rem;
+    }
+
+    .env-card {
+      border-radius: 16px;
+      padding: 0.65rem 0.7rem;
+      background: var(--beige-light);
+      border: 1px solid rgba(214, 184, 136, 0.6);
+      font-size: 0.78rem;
+      display: grid;
+      gap: 0.3rem;
+    }
+
+    .env-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .env-label {
+      font-weight: 600;
+    }
+
+    .env-value {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .env-status {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    /* Animal table */
+    .table-wrapper {
+      border-radius: 14px;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      overflow: hidden;
+      font-size: 0.76rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead {
+      background: #f1f5f9;
+    }
+
+    th,
+    td {
+      padding: 0.4rem 0.55rem;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    th {
+      font-weight: 500;
+      font-size: 0.74rem;
+      color: #64748b;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    tbody tr:nth-child(odd) {
+      background: #ffffff;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #f8fafc;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+    }
+
+    .badge.ok {
+      background: rgba(40, 180, 99, 0.12);
+      color: var(--ok);
+    }
+
+    .badge.warn {
+      background: rgba(255, 182, 72, 0.14);
+      color: var(--warning);
+    }
+
+    .badge.danger {
+      background: rgba(225, 91, 91, 0.12);
+      color: var(--danger);
+    }
+
+    /* Alerts panel */
+    .alerts-list {
+      display: grid;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      max-height: 220px;
+      overflow-y: auto;
+      padding-right: 0.2rem;
+    }
+
+    .alert-item {
+      border-radius: 14px;
+      padding: 0.5rem 0.55rem;
+      background: #fef2f2;
+      border: 1px solid rgba(254, 202, 202, 0.9);
+      display: grid;
+      gap: 0.12rem;
+    }
+
+    .alert-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .alert-main {
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .alert-meta {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .alert-level {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 999px;
+      background: rgba(225, 91, 91, 0.12);
+      color: var(--danger);
+      font-size: 0.7rem;
+    }
+
+    .alert-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(248, 113, 113, 0.8);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--danger);
+      font-size: 0.9rem;
+    }
+
+    /* AI Assistant & Analytics */
+    .assistant-analytics-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+      gap: 1.4rem;
+      align-items: flex-start;
+    }
+
+    .chat-shell {
+      border-radius: 22px;
+      padding: 1rem;
+      background: linear-gradient(145deg, #0f172a, #072617);
+      color: #e5f3ea;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.5);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .chat-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.8rem;
+    }
+
+    .chat-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .chat-sub {
+      font-size: 0.75rem;
+      color: #9ca3af;
+    }
+
+    .chat-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.16);
+      border: 1px solid rgba(74, 222, 128, 0.5);
+      font-size: 0.72rem;
+    }
+
+    .chat-status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #4ade80;
+      box-shadow: 0 0 8px rgba(74, 222, 128, 0.8);
+    }
+
+    .chat-messages {
+      margin-top: 0.2rem;
+      padding: 0.1rem;
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.7);
+      max-height: 220px;
+      overflow-y: auto;
+      display: grid;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+    }
+
+    .chat-bubble {
+      max-width: 80%;
+      padding: 0.4rem 0.6rem;
+      border-radius: 14px;
+    }
+
+    .chat-bubble.user {
+      margin-left: auto;
+      border-bottom-right-radius: 4px;
+      background: linear-gradient(135deg, var(--blue-sky), #38bdf8);
+      color: #0f172a;
+    }
+
+    .chat-bubble.bot {
+      margin-right: auto;
+      border-bottom-left-radius: 4px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      color: #e5e7eb;
+    }
+
+    .chat-input-row {
+      margin-top: 0.4rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.5rem;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+
+    .chat-input-wrapper {
+      position: relative;
+    }
+
+    .chat-input {
+      width: 100%;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      background: rgba(15, 23, 42, 0.85);
+      color: #e5e7eb;
+      padding: 0.4rem 2.2rem 0.4rem 0.8rem;
+      font-size: 0.8rem;
+      outline: none;
+    }
+
+    .chat-input::placeholder {
+      color: #6b7280;
+    }
+
+    .chat-send-btn {
+      position: absolute;
+      right: 0.25rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--green-soft), var(--green-deep));
+      color: #f9fafb;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    .chat-suggestions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.2rem;
+    }
+
+    .chat-suggestion {
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 0.72rem;
+      cursor: pointer;
+    }
+
+    .analytics-shell {
+      border-radius: 22px;
+      padding: 1rem;
+      background: #ffffff;
+      border: var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .analytics-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 0.7rem;
+      align-items: stretch;
+    }
+
+    .mini-chart {
+      border-radius: 16px;
+      padding: 0.6rem 0.7rem;
+      background: var(--blue-soft);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      font-size: 0.75rem;
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .mini-chart-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.4rem;
+    }
+
+    .mini-chart-value {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .mini-chart-body {
+      min-height: 110px;
+    }
+
+    .analytics-right {
+      display: grid;
+      gap: 0.45rem;
+      font-size: 0.78rem;
+    }
+
+    .trend-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.35rem 0.55rem;
+      border-radius: 12px;
+      background: #f9fafb;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+    }
+
+    .trend-label {
+      font-size: 0.78rem;
+    }
+
+    .trend-change {
+      font-size: 0.75rem;
+      color: var(--ok);
+    }
+
+    /* Benefits section */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .benefit-card {
+      border-radius: 20px;
+      padding: 1rem;
+      background: #ffffff;
+      border: var(--border-subtle);
+      box-shadow: var(--shadow-subtle);
+      font-size: 0.85rem;
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .benefit-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: var(--green-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--green-deep);
+      margin-bottom: 0.25rem;
+    }
+
+    .benefit-title {
+      font-weight: 600;
+    }
+
+    .benefit-text {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: auto;
+      padding: 2rem 6vw 2.5rem;
+      border-top: 1px solid rgba(148, 163, 184, 0.35);
+      background: #0b1720;
+      color: #e5e7eb;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) repeat(2, minmax(0, 1fr));
+      gap: 2rem;
+      font-size: 0.85rem;
+    }
+
+    .footer-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-text {
+      color: #9ca3af;
+      font-size: 0.85rem;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 0.4rem;
+      color: #cbd5f5;
+      font-size: 0.85rem;
+    }
+
+    .footer-links a {
+      color: inherit;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      margin-top: 1.5rem;
+      font-size: 0.75rem;
+      color: #6b7280;
+      display: flex;
+      justify-content: space-between;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    /* Utilities */
+    .pill-soft {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.16rem 0.55rem;
+      border-radius: 999px;
+      border: 1px dashed rgba(148, 163, 184, 0.7);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .muted {
+      color: var(--text-muted);
+    }
+
+    .fw-medium {
+      font-weight: 500;
+    }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .hero-main {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      }
+      .dashboard-shell {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .dashboard-sidebar {
+        flex-direction: row;
+        align-items: center;
+        overflow-x: auto;
+        padding: 0.75rem 1rem;
+        gap: 1rem;
+      }
+      .sidebar-header {
+        min-width: 190px;
+      }
+      .sidebar-nav {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 0.35rem;
+        min-width: max-content;
+      }
+      .sidebar-footer {
+        display: none;
+      }
+      .metrics-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .assistant-analytics-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .benefits-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        padding-inline: 1.25rem;
+      }
+      .section {
+        padding-inline: 1.25rem;
+      }
+      .footer {
+        padding-inline: 1.25rem;
+      }
+      .hero-main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-visual {
+        order: -1;
+      }
+      .overview-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .dashboard-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .analytics-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .footer-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .hero-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      .hero-nav-links {
+        order: 2;
+        flex-wrap: wrap;
+      }
+      .hero-cta-nav {
+        margin-left: auto;
+      }
+      .metrics-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .benefits-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .env-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .assistant-analytics-grid {
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero-cta-nav {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .metrics-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .dashboard-main {
+        padding-inline: 0.9rem;
+      }
+      th,
+      td {
+        padding-inline: 0.35rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- For brevity, the HTML structure is the same as in smart-livestock-hub.html:
-       hero, system overview, dashboard, AI assistant, analytics, benefits, and footer.
-       The important difference is in the ThingSpeak config below. -->
+  <div class="page-shell">
+    <!-- HERO / LANDING -->
+    <header class="hero" id="top">
+      <nav class="hero-nav">
+        <div class="brand">
+          <div class="brand-icon">
+            <div class="brand-icon-inner">
+              <span>🐄</span>
+            </div>
+          </div>
+          <div class="brand-text">
+            <div class="brand-title">Smart Livestock Hub</div>
+            <div class="brand-sub">IoT &amp; AI for healthier herds</div>
+          </div>
+        </div>
+        <div class="hero-nav-links">
+          <a href="#overview">System overview</a>
+          <a href="#dashboard">Live dashboard</a>
+          <a href="#assistant">AI assistant</a>
+          <a href="#benefits">Benefits</a>
+        </div>
+        <div class="hero-cta-nav">
+          <button class="btn btn-outline" onclick="scrollToSection('dashboard')">
+            View dashboard
+          </button>
+          <button class="btn btn-primary" onclick="scrollToSection('assistant')">
+            Ask AI vet
+          </button>
+        </div>
+      </nav>
 
-  <!-- You can paste the full HTML content from smart-livestock-hub.html here if needed. -->
+      <div class="hero-main">
+        <div class="hero-copy">
+          <div class="hero-kicker">
+            <span class="hero-kicker-pill">For modern dairy &amp; cattle farms</span>
+            Real-time shed insights, straight from your field.
+          </div>
+          <h1 class="hero-title">
+            Smart <span class="highlight">Livestock Monitoring System</span> for
+            calmer, healthier herds.
+          </h1>
+          <p class="hero-subtitle">
+            Monitor each animal’s health, shed climate, and activity using IoT sensors and AI guidance.
+            Designed for farmers and veterinarians who need clear answers, not complex dashboards.
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="scrollToSection('dashboard')">
+              View Live Monitoring Dashboard
+            </button>
+            <button class="btn btn-outline" onclick="scrollToSection('overview')">
+              Learn how the hub works
+            </button>
+          </div>
+          <div class="hero-meta">
+            <div class="hero-meta-item">
+              <div class="hero-meta-dot"></div>
+              <span>Central hub monitors every stall in your shed.</span>
+            </div>
+            <div class="hero-meta-item">
+              <div class="hero-meta-dot" style="background: var(--blue-sky); box-shadow: 0 0 0 6px rgba(116, 185, 255, 0.25);"></div>
+              <span>Built on live data from ThingSpeak IoT cloud.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-image-shell">
+            <div class="hero-image-overlay"></div>
+            <div class="hero-image-content">
+              <div class="hero-image-top">
+                <div class="hero-image-tag">Pasture view · Live</div>
+                <div class="hero-image-pill">
+                  <div class="hero-image-pill-dot"></div>
+                  <span id="heroLiveAnimals">Syncing with shed...</span>
+                </div>
+              </div>
+              <div class="hero-image-bottom">
+                <div class="hero-image-caption">
+                  Calm, comfortable cattle are more productive. The hub continuously tracks health,
+                  temperature, and air quality so farmers can act early.
+                </div>
+                <div class="hero-image-mini-grid">
+                  <div class="hero-image-mini-card">
+                    <div class="hero-image-mini-label">Avg. body temp</div>
+                    <div class="hero-image-mini-value" id="heroBodyTemp">-- °C</div>
+                    <div class="hero-image-mini-label">Last 30 min</div>
+                  </div>
+                  <div class="hero-image-mini-card">
+                    <div class="hero-image-mini-label">Shed air quality</div>
+                    <div class="hero-image-mini-value" id="heroAirQuality">Analysing...</div>
+                    <div class="hero-image-mini-label">IoT gas sensor</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual-floating">
+            <div class="hero-float-card">
+              <div class="hero-float-badge">📶</div>
+              <div class="hero-float-text">
+                <span class="label">Hub status</span>
+                <span class="value" id="heroHubStatus">Connecting to ThingSpeak...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- SYSTEM OVERVIEW -->
+    <section class="section" id="overview">
+      <div class="section-header">
+        <div class="section-title-group">
+          <div class="section-kicker">System overview</div>
+          <h2 class="section-title">From each animal to your dashboard in seconds.</h2>
+          <p class="section-subtitle">
+            Sensors attached to each animal and within the shed report live readings to a microcontroller hub.
+            Data is pushed to the ThingSpeak cloud, where the Smart Livestock Hub turns it into simple, colour-coded insights.
+          </p>
+        </div>
+        <div class="pill-soft">
+          <span>🌱 Farmer friendly</span>
+          <span>·</span>
+          <span>🔗 Powered by IoT &amp; AI</span>
+        </div>
+      </div>
+
+      <div class="overview-grid">
+        <div>
+          <p class="overview-text">
+            The central shed hub continuously listens to wireless sensors on your cattle and in the environment.
+            Temperature, humidity, gas levels, and movement data are streamed to the cloud, where our dashboard and AI
+            assistant keep watch for any early signs of illness or stress.
+          </p>
+          <div class="overview-points">
+            <div class="overview-point">
+              <div class="overview-point-icon">🛰</div>
+              <div>
+                <div class="overview-point-title">Wearable &amp; stall sensors</div>
+                <div class="muted">
+                  Temperature, activity, and identification sensors send readings every few minutes.
+                </div>
+              </div>
+            </div>
+            <div class="overview-point">
+              <div class="overview-point-icon">🧠</div>
+              <div>
+                <div class="overview-point-title">AI-assisted risk scoring</div>
+                <div class="muted">
+                  Simple green / yellow / red indicators flag unhealthy patterns for human review.
+                </div>
+              </div>
+            </div>
+            <div class="overview-point">
+              <div class="overview-point-icon">📱</div>
+              <div>
+                <div class="overview-point-title">Any device, anywhere</div>
+                <div class="muted">
+                  Farmers and vets can check the shed status from a phone, tablet, or office PC.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="overview-diagram" aria-label="System data flow diagram">
+          <div class="diagram-flow">
+            <div class="diagram-node">
+              <div class="diagram-node-icon">🐄</div>
+              <div class="diagram-node-label">Sensors on animals</div>
+              <div class="diagram-node-desc">Body temp · movement · ID</div>
+            </div>
+            <div class="diagram-node">
+              <div class="diagram-node-icon">🔌</div>
+              <div class="diagram-node-label">Microcontroller hub</div>
+              <div class="diagram-node-desc">Collects readings in the shed</div>
+            </div>
+            <div class="diagram-node">
+              <div class="diagram-node-icon">☁️</div>
+              <div class="diagram-node-label">ThingSpeak cloud</div>
+              <div class="diagram-node-desc">Stores &amp; forwards live data</div>
+            </div>
+            <div class="diagram-node">
+              <div class="diagram-node-icon">📊</div>
+              <div class="diagram-node-label">Farmer dashboard</div>
+              <div class="diagram-node-desc">Turns streams into clear alerts</div>
+            </div>
+
+            <div class="diagram-arrow diagram-arrow-1">➜</div>
+            <div class="diagram-arrow diagram-arrow-2">➜</div>
+            <div class="diagram-arrow diagram-arrow-3">➜</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- LIVE MONITORING DASHBOARD -->
+    <section class="section" id="dashboard">
+      <div class="section-header">
+        <div class="section-title-group">
+          <div class="section-kicker">Live monitoring dashboard</div>
+          <h2 class="section-title">See your shed health at a glance.</h2>
+          <p class="section-subtitle">
+            This dashboard connects directly to your ThingSpeak channel
+            (<span class="fw-medium">ID 3286229</span>) to visualise live livestock and shed data in a
+            farmer‑friendly way.
+          </p>
+        </div>
+        <div class="pill-soft">
+          <span>⏱ Auto-refreshing</span>
+          <span>·</span>
+          <span>🟢 Green = healthy · 🟡 Caution · 🔴 Action needed</span>
+        </div>
+      </div>
+
+      <div class="dashboard-shell" aria-label="Smart Livestock Monitoring Dashboard">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+          <div class="sidebar-header">
+            <div class="sidebar-title">Smart Livestock Monitoring Dashboard</div>
+            <div class="sidebar-sub">Designed for farmers &amp; vets</div>
+            <div class="sidebar-time">
+              <span>Today</span>
+              <span id="sidebarDate">--</span>
+            </div>
+          </div>
+          <nav class="sidebar-nav">
+            <div class="sidebar-link active">
+              <span class="icon">🏠</span>
+              <span>Dashboard Overview</span>
+            </div>
+            <div class="sidebar-link">
+              <span class="icon">🐄</span>
+              <span>Animal Health</span>
+            </div>
+            <div class="sidebar-link">
+              <span class="icon">🌡</span>
+              <span>Shed Conditions</span>
+            </div>
+            <div class="sidebar-link">
+              <span class="icon">⚠️</span>
+              <span>Alerts &amp; Warnings</span>
+            </div>
+            <div class="sidebar-link" onclick="scrollToSection('assistant')">
+              <span class="icon">🤖</span>
+              <span>AI Livestock Assistant</span>
+            </div>
+            <div class="sidebar-link">
+              <span class="icon">📈</span>
+              <span>Reports &amp; Analytics</span>
+            </div>
+            <div class="sidebar-link">
+              <span class="icon">⚙️</span>
+              <span>Settings</span>
+            </div>
+          </nav>
+          <div class="sidebar-footer">
+            <div>Farm view</div>
+            <div class="muted">A calm, rural‑inspired UI with live data.</div>
+            <img
+              src="https://images.pexels.com/photos/735968/pexels-photo-735968.jpeg?auto=compress&cs=tinysrgb&w=800"
+              alt="Cattle grazing in a green field"
+            />
+          </div>
+        </aside>
+
+        <!-- Main dashboard content -->
+        <main class="dashboard-main">
+          <!-- Top bar -->
+          <div class="dashboard-topbar">
+            <div class="dashboard-topbar-left">
+              <div class="dashboard-top-title">Shed overview · Live</div>
+              <div class="dashboard-top-sub" id="dashboardSubtitle">
+                Waiting for latest readings from ThingSpeak...
+              </div>
+            </div>
+            <div class="dashboard-topbar-right">
+              <div class="chip">
+                <div class="chip-dot"></div>
+                <span id="thingSpeakStatus">Connecting to ThingSpeak...</span>
+              </div>
+              <div class="avatar" title="Logged in as Farmer">
+                <span>YS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Overview metric cards -->
+          <div class="metrics-grid" aria-label="Key livestock and shed metrics">
+            <article class="metric-card" id="cardTotalAnimals">
+              <div class="metric-header">
+                <div class="metric-label">Total animals monitored</div>
+                <div class="metric-icon" style="background: rgba(123,191,142,0.2); color: var(--green-deep);">
+                  🐄
+                </div>
+              </div>
+              <div class="metric-value" id="metricTotalAnimals">--</div>
+              <div class="metric-foot">
+                <span class="muted">Based on recent ThingSpeak entries</span>
+                <span class="status-pill ok">
+                  <span class="status-dot"></span>
+                  Tracking
+                </span>
+              </div>
+            </article>
+
+            <article class="metric-card" id="cardAvgBodyTemp">
+              <div class="metric-header">
+                <div class="metric-label" id="labelBodyTemp">Average body temperature</div>
+                <div class="metric-icon" style="background: rgba(239,246,255,0.9); color: #1d4ed8;">
+                  🌡
+                </div>
+              </div>
+              <div class="metric-value" id="metricAvgBodyTemp">-- °C</div>
+              <div class="metric-foot">
+                <span class="muted">Across all recent readings</span>
+                <span class="status-pill ok" id="statusAvgBodyTemp">
+                  <span class="status-dot"></span>
+                  Stable
+                </span>
+              </div>
+            </article>
+
+            <article class="metric-card" id="cardAirQuality">
+              <div class="metric-header">
+                <div class="metric-label" id="labelAirQuality">Air quality in shed</div>
+                <div class="metric-icon" style="background: rgba(219,239,255,0.9); color: #0369a1;">
+                  🌬
+                </div>
+              </div>
+              <div class="metric-value" id="metricAirQuality">--</div>
+              <div class="metric-foot">
+                <span class="muted">Gas sensor from ThingSpeak</span>
+                <span class="status-pill ok" id="statusAirQuality">
+                  <span class="status-dot"></span>
+                  Healthy air
+                </span>
+              </div>
+            </article>
+
+            <article class="metric-card" id="cardHumidity">
+              <div class="metric-header">
+                <div class="metric-label" id="labelHumidity">Humidity level</div>
+                <div class="metric-icon" style="background: rgba(219,234,254,0.8); color: #2563eb;">
+                  💧
+                </div>
+              </div>
+              <div class="metric-value" id="metricHumidity">-- %</div>
+              <div class="metric-foot">
+                <span class="muted">Inside cattle shed</span>
+                <span class="status-pill ok" id="statusHumidity">
+                  <span class="status-dot"></span>
+                  Comfortable
+                </span>
+              </div>
+            </article>
+
+            <article class="metric-card" id="cardAlerts">
+              <div class="metric-header">
+                <div class="metric-label">Active health alerts</div>
+                <div class="metric-icon" style="background: rgba(254,242,242,0.9); color: var(--danger);">
+                  ⚠
+                </div>
+              </div>
+              <div class="metric-value" id="metricAlerts">0</div>
+              <div class="metric-foot">
+                <span class="muted">Based on simple AI rules</span>
+                <span class="status-pill ok" id="statusAlerts">
+                  <span class="status-dot"></span>
+                  All clear
+                </span>
+              </div>
+            </article>
+          </div>
+
+          <!-- Middle dashboard content -->
+          <div class="dashboard-grid">
+            <!-- Left: health monitoring and environment -->
+            <section class="panel" aria-label="Livestock health and shed conditions">
+              <header class="panel-header">
+                <div>
+                  <div class="panel-title">Livestock health monitoring</div>
+                  <div class="panel-subtitle">
+                    Activity, temperature trends, and behaviour indicators.
+                  </div>
+                </div>
+                <div class="panel-tag">ThingSpeak trends · Last 24 readings</div>
+              </header>
+              <div class="chart-wrapper">
+                <canvas id="chartHealthTrends" aria-label="Animal temperature and activity chart"></canvas>
+              </div>
+              <div class="env-grid" aria-label="Shed environment conditions">
+                <div class="env-card" id="envTempCard">
+                  <div class="env-heading">
+                    <div class="env-label" id="labelShedTemp">Shed temperature</div>
+                    <span class="status-pill ok" id="statusShedTemp">
+                      <span class="status-dot"></span>
+                      Stable
+                    </span>
+                  </div>
+                  <div class="env-value" id="envShedTemp">-- °C</div>
+                  <div class="env-status" id="envShedTempText">
+                    Awaiting readings from the last update.
+                  </div>
+                </div>
+                <div class="env-card" id="envVentCard">
+                  <div class="env-heading">
+                    <div class="env-label">Ventilation &amp; comfort</div>
+                    <span class="status-pill ok" id="statusVent">
+                      <span class="status-dot"></span>
+                      Comfortable
+                    </span>
+                  </div>
+                  <div class="env-value" id="envVent">Balanced</div>
+                  <div class="env-status" id="envVentText">
+                    Based on humidity + air quality combination.
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Right: alerts -->
+            <section class="panel" aria-label="Alerts and notifications">
+              <header class="panel-header">
+                <div>
+                  <div class="panel-title">Alerts &amp; notifications</div>
+                  <div class="panel-subtitle">
+                    Automatically generated warnings from AI rules.
+                  </div>
+                </div>
+                <div class="panel-tag">Updated with each ThingSpeak fetch</div>
+              </header>
+              <div class="alerts-list" id="alertsList">
+                <!-- Dynamic alerts will be injected here -->
+                <div class="alert-item">
+                  <div class="alert-header">
+                    <div class="alert-main">
+                      <span class="alert-icon">!</span>
+                      Waiting for live data from ThingSpeak...
+                    </div>
+                    <div class="alert-level">
+                      <span class="status-dot"></span>
+                      Info
+                    </div>
+                  </div>
+                  <div class="alert-meta">
+                    <span>Ensure your channel 3286229 has recent entries.</span>
+                    <span>Source: Smart Livestock Hub</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- Animal identification panel -->
+          <section class="panel" aria-label="Animal identification and individual status">
+            <header class="panel-header">
+              <div>
+                <div class="panel-title">Animal identification · RFID</div>
+                <div class="panel-subtitle">
+                  Recent animals seen in your ThingSpeak feed with basic health flags.
+                </div>
+              </div>
+              <div class="panel-tag">Tap rows to review in detail</div>
+            </header>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Animal ID</th>
+                    <th>Health status</th>
+                    <th>Activity level</th>
+                    <th>Last body temp</th>
+                    <th>Last updated</th>
+                  </tr>
+                </thead>
+                <tbody id="animalTableBody">
+                  <!-- Rows filled from ThingSpeak data -->
+                  <tr>
+                    <td colspan="5" class="muted">
+                      Waiting for ThingSpeak data... animals will appear here once the channel has
+                      recent entries.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </main>
+      </div>
+    </section>
+
+    <!-- AI LIVESTOCK ASSISTANT + ANALYTICS -->
+    <section class="section" id="assistant">
+      <div class="section-header">
+        <div class="section-title-group">
+          <div class="section-kicker">AI livestock assistant &amp; analytics</div>
+          <h2 class="section-title">Ask simple questions, get farmer‑friendly answers.</h2>
+          <p class="section-subtitle">
+            The AI livestock assistant explains what your data might mean in everyday terms.
+            Combine it with the analytics charts to understand trends, risk, and shed comfort over time.
+          </p>
+        </div>
+        <div class="pill-soft">
+          <span>🤝 AI co‑pilot</span>
+          <span>·</span>
+          <span>Explains alerts using plain language</span>
+        </div>
+      </div>
+
+      <div class="assistant-analytics-grid">
+        <!-- Chatbot -->
+        <section class="chat-shell" aria-label="AI livestock assistant chat">
+          <header class="chat-header">
+            <div>
+              <div class="chat-title">AI Livestock Assistant</div>
+              <div class="chat-sub">
+                Ask about temperature, low activity, or how to improve shed conditions.
+              </div>
+            </div>
+            <div class="chat-status">
+              <span class="chat-status-dot"></span>
+              <span>Online · Simulated advice</span>
+            </div>
+          </header>
+
+          <div class="chat-messages" id="chatMessages">
+            <div class="chat-bubble bot">
+              Namaste! I’m your AI livestock helper. Ask me why an alert was raised, what high
+              temperature means, or how to keep your shed more comfortable for the animals.
+            </div>
+          </div>
+
+          <div class="chat-input-row">
+            <div class="chat-input-wrapper">
+              <input
+                id="chatInput"
+                class="chat-input"
+                type="text"
+                placeholder="Ask a question, e.g. “Why is my cow less active today?”"
+              />
+              <button class="chat-send-btn" id="chatSendBtn" aria-label="Send message">
+                ➤
+              </button>
+            </div>
+          </div>
+          <div class="chat-suggestions">
+            <button class="chat-suggestion" data-question="Why is my cow less active today?">
+              Why is my cow less active today?
+            </button>
+            <button class="chat-suggestion" data-question="What does a high body temperature mean?">
+              What does high temperature mean?
+            </button>
+            <button class="chat-suggestion" data-question="How can I improve cattle shed conditions?">
+              How can I improve cattle shed conditions?
+            </button>
+            <button class="chat-suggestion" data-question="How often should I check fever alerts?">
+              How often should I check fever alerts?
+            </button>
+          </div>
+        </section>
+
+        <!-- Analytics -->
+        <section class="analytics-shell" aria-label="Analytics and trends">
+          <header class="panel-header" style="padding: 0;">
+            <div>
+              <div class="panel-title">Analytics overview</div>
+              <div class="panel-subtitle">
+                Long‑term trends from your ThingSpeak history help catch patterns before they become
+                emergencies.
+              </div>
+            </div>
+            <div class="panel-tag">Simple visual summaries</div>
+          </header>
+
+          <div class="analytics-grid">
+            <div class="mini-chart" aria-label="Health trend chart">
+              <div class="mini-chart-title">
+                <span>Health trends over time</span>
+                <span class="mini-chart-value" id="analyticsHealthScore">--</span>
+              </div>
+              <div class="mini-chart-body">
+                <canvas id="chartHealthScore"></canvas>
+              </div>
+            </div>
+            <div class="mini-chart" aria-label="Alert frequency chart" style="background: #fef3c7;">
+              <div class="mini-chart-title">
+                <span>Alert frequency</span>
+                <span class="mini-chart-value" id="analyticsAlertFreq">--</span>
+              </div>
+              <div class="mini-chart-body">
+                <canvas id="chartAlertFreq"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="analytics-right">
+            <div class="trend-item">
+              <div>
+                <div class="trend-label">Temperature pattern</div>
+                <div class="muted" id="trendTempText">Awaiting data...</div>
+              </div>
+              <div class="trend-change" id="trendTempChange">--</div>
+            </div>
+            <div class="trend-item">
+              <div>
+                <div class="trend-label">Behaviour changes</div>
+                <div class="muted" id="trendActivityText">Awaiting data...</div>
+              </div>
+              <div class="trend-change" id="trendActivityChange">--</div>
+            </div>
+            <div class="trend-item">
+              <div>
+                <div class="trend-label">Air &amp; humidity comfort</div>
+                <div class="muted" id="trendComfortText">Awaiting data...</div>
+              </div>
+              <div class="trend-change" id="trendComfortChange">--</div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- BENEFITS -->
+    <section class="section" id="benefits">
+      <div class="section-header">
+        <div class="section-title-group">
+          <div class="section-kicker">Benefits for your farm</div>
+          <h2 class="section-title">Healthier herds, fewer surprises.</h2>
+          <p class="section-subtitle">
+            Smart Livestock Health Monitoring Hub combines early alerts, simple visuals, and AI
+            guidance so you can focus on taking care of your animals instead of fighting with
+            technology.
+          </p>
+        </div>
+      </div>
+
+      <div class="benefits-grid">
+        <article class="benefit-card">
+          <div class="benefit-icon">⏰</div>
+          <div class="benefit-title">Early disease detection</div>
+          <div class="benefit-text">
+            Spot fevers, stress, and abnormal behaviour before they turn into emergencies, giving you
+            time to isolate and treat affected animals.
+          </div>
+        </article>
+
+        <article class="benefit-card">
+          <div class="benefit-icon">🛡</div>
+          <div class="benefit-title">Reduced livestock mortality</div>
+          <div class="benefit-text">
+            Proactive alerts and AI explanations support vets and farmers in making faster, more
+            confident decisions about treatment.
+          </div>
+        </article>
+
+        <article class="benefit-card">
+          <div class="benefit-icon">📈</div>
+          <div class="benefit-title">Improved farm productivity</div>
+          <div class="benefit-text">
+            Comfortable sheds and healthy herds mean better milk yield, weight gain, and long‑term
+            productivity per animal.
+          </div>
+        </article>
+
+        <article class="benefit-card">
+          <div class="benefit-icon">💰</div>
+          <div class="benefit-title">Cost‑effective monitoring</div>
+          <div class="benefit-text">
+            Uses affordable IoT hardware and the ThingSpeak cloud, so even small farms can benefit
+            from smart monitoring.
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-title">Smart Livestock Health Monitoring Hub</div>
+          <p class="footer-text">
+            A calm, farmer‑friendly dashboard that connects IoT sensors, a microcontroller hub, and
+            ThingSpeak cloud analytics to help protect your cattle’s health.
+          </p>
+        </div>
+        <div>
+          <div class="footer-title">Project &amp; research team</div>
+          <div class="footer-text">
+            This project demonstrates an end‑to‑end IoT architecture for livestock health management,
+            combining embedded systems, cloud dashboards, and AI‑powered decision support tools.
+          </div>
+        </div>
+        <div>
+          <div class="footer-title">Links &amp; documentation</div>
+          <div class="footer-links">
+            <a href="https://thingspeak.mathworks.com/channels/3286229/shared_view" target="_blank" rel="noreferrer">
+              ThingSpeak live data channel
+            </a>
+            <a href="#dashboard">Live monitoring dashboard</a>
+            <a href="#assistant">AI livestock assistant</a>
+            <a href="#overview">System overview &amp; architecture</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="footerYear"></span> Smart Livestock Monitoring Hub.</span>
+        <span>Built with a farmer‑first, technology‑second mindset.</span>
+      </div>
+    </footer>
+  </div>
 
   <script>
-    // Smooth scroll helper
+    // -----------------------------
+    // Smooth scrolling
+    // -----------------------------
     function scrollToSection(id) {
       const el = document.getElementById(id);
       if (!el) return;
       el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
-    // ThingSpeak configuration – customised for your channel
+    // -----------------------------
+    // ThingSpeak integration config
+    // -----------------------------
     const THINGSPEAK_CONFIG = {
       channelId: 3286229,
       results: 40,
-      readApiKey: "JC7VSR1NMB8LHSHW", // your real READ API key
-      // Channel 3286229 currently has:
-      // field1 = temperature (°C)
-      // field2 = humidity (%)
+      /*
+       * Channel is private, so we use your READ API key.
+       */
+      readApiKey: "JC7VSR1NMB8LHSHW",
+      /*
+       * Map the logical sensor meanings to ThingSpeak fields.
+       * Current channel:
+       *   field1 = temperature (°C)
+       *   field2 = humidity (%)
+       */
       fieldMapping: {
-        bodyTemperature: "field1",   // used as shed temp / animal temp
+        bodyTemperature: "field1",
         shedTemperature: "field1",
         humidity: "field2",
-        airQuality: "field2",        // we reuse humidity until you add a gas sensor field
-        activity: "field2",          // placeholder until you add an activity field
-        animalId: "field2",          // placeholder – no RFID in this channel yet
+        airQuality: "field2", // reuse humidity as proxy for now
+        activity: "field2",   // placeholder until you add activity field
+        animalId: "field2",   // placeholder – no RFID yet
       },
-      refreshMs: 60_000,
+      refreshMs: 60_000, // 1 minute
     };
 
-    // The rest of the JavaScript is identical to smart-livestock-hub.html:
-    // - buildThingSpeakUrl()
-    // - fetchThingSpeakData()
-    // - computeSeriesStats(), updateDashboardFromThingSpeak()
-    // - chart initialisation for Chart.js
-    // - AI assistant chat logic
-    // - date/time helpers and DOMContentLoaded initialisation
+    function buildThingSpeakUrl() {
+      const base = "https://api.thingspeak.com/channels/" + THINGSPEAK_CONFIG.channelId + "/feeds.json";
+      const params = new URLSearchParams();
+      params.set("results", String(THINGSPEAK_CONFIG.results));
+      if (THINGSPEAK_CONFIG.readApiKey) {
+        params.set("api_key", THINGSPEAK_CONFIG.readApiKey);
+      }
+      return base + "?" + params.toString();
+    }
 
-    // You can copy the full script block from smart-livestock-hub.html if you want
-    // the complete functionality in this repo.
+    async function fetchThingSpeakData() {
+      const statusEl = document.getElementById("thingSpeakStatus");
+      if (statusEl) statusEl.textContent = "Fetching latest data...";
+      try {
+        const url = buildThingSpeakUrl();
+        const res = await fetch(url);
+        if (!res.ok) {
+          throw new Error("ThingSpeak responded with " + res.status);
+        }
+        const data = await res.json();
+        if (!data || !Array.isArray(data.feeds)) {
+          throw new Error("Unexpected ThingSpeak payload");
+        }
+        updateDashboardFromThingSpeak(data);
+        if (statusEl) statusEl.textContent = "Connected to ThingSpeak · " + data.feeds.length + " recent entries";
+        const heroHubStatus = document.getElementById("heroHubStatus");
+        if (heroHubStatus) heroHubStatus.textContent = "Hub online · Live data streaming";
+      } catch (err) {
+        console.error("ThingSpeak fetch error:", err);
+        if (statusEl) {
+          statusEl.textContent = "Could not fetch ThingSpeak data. Check channel visibility or API key.";
+        }
+        const heroHubStatus = document.getElementById("heroHubStatus");
+        if (heroHubStatus) heroHubStatus.textContent = "Connection issue · Using last known values";
+      }
+    }
+
+    function parseNumeric(value) {
+      const n = parseFloat(value);
+      return Number.isFinite(n) ? n : null;
+    }
+
+    function computeSeriesStats(values) {
+      const nums = values.map(parseNumeric).filter((n) => n !== null);
+      if (!nums.length) {
+        return { latest: null, avg: null, min: null, max: null };
+      }
+      const latest = nums[nums.length - 1];
+      const sum = nums.reduce((a, b) => a + b, 0);
+      const avg = sum / nums.length;
+      const min = Math.min(...nums);
+      const max = Math.max(...nums);
+      return { latest, avg, min, max };
+    }
+
+    function timestampLabel(feed) {
+      if (!feed.created_at) return "";
+      const d = new Date(feed.created_at);
+      if (Number.isNaN(d.getTime())) return feed.created_at;
+      return d.toLocaleTimeString(undefined, { hour: "2-digit", minute: "2-digit" });
+    }
+
+    // -----------------------------
+    // Charts
+    // -----------------------------
+    let chartHealthTrends, chartHealthScore, chartAlertFreq;
+
+    function initCharts() {
+      const ctxHealth = document.getElementById("chartHealthTrends");
+      const ctxScore = document.getElementById("chartHealthScore");
+      const ctxAlerts = document.getElementById("chartAlertFreq");
+
+      if (ctxHealth) {
+        chartHealthTrends = new Chart(ctxHealth, {
+          type: "line",
+          data: {
+            labels: [],
+            datasets: [
+              {
+                label: "Body temperature (°C)",
+                data: [],
+                borderColor: "#22c55e",
+                backgroundColor: "rgba(34,197,94,0.12)",
+                tension: 0.35,
+                borderWidth: 2,
+                pointRadius: 0,
+                fill: true,
+              },
+              {
+                label: "Activity level",
+                data: [],
+                borderColor: "#0ea5e9",
+                backgroundColor: "rgba(14,165,233,0.1)",
+                tension: 0.35,
+                borderWidth: 2,
+                pointRadius: 0,
+                yAxisID: "y1",
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: false,
+                grid: { color: "rgba(148,163,184,0.3)", drawBorder: false },
+                ticks: { font: { size: 10 } },
+              },
+              y1: {
+                position: "right",
+                grid: { display: false, drawBorder: false },
+                ticks: { font: { size: 10 } },
+              },
+              x: {
+                grid: { display: false },
+                ticks: { font: { size: 9 } },
+              },
+            },
+            plugins: {
+              legend: { display: false },
+            },
+          },
+        });
+      }
+
+      if (ctxScore) {
+        chartHealthScore = new Chart(ctxScore, {
+          type: "line",
+          data: {
+            labels: [],
+            datasets: [
+              {
+                label: "Health score",
+                data: [],
+                borderColor: "#22c55e",
+                backgroundColor: "rgba(34,197,94,0.2)",
+                tension: 0.35,
+                borderWidth: 2,
+                pointRadius: 0,
+                fill: true,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: { beginAtZero: true, max: 100, grid: { color: "rgba(148,163,184,0.3)", drawBorder: false } },
+              x: { display: false },
+            },
+            plugins: { legend: { display: false } },
+          },
+        });
+      }
+
+      if (ctxAlerts) {
+        chartAlertFreq = new Chart(ctxAlerts, {
+          type: "bar",
+          data: {
+            labels: [],
+            datasets: [
+              {
+                label: "Alerts",
+                data: [],
+                backgroundColor: "rgba(248,113,113,0.75)",
+                borderRadius: 8,
+                borderSkipped: false,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: { color: "rgba(148,163,184,0.3)", drawBorder: false },
+                ticks: { stepSize: 1, font: { size: 10 } },
+              },
+              x: {
+                grid: { display: false },
+                ticks: { font: { size: 10 } },
+              },
+            },
+            plugins: { legend: { display: false } },
+          },
+        });
+      }
+    }
+
+    // -----------------------------
+    // Dashboard updates from ThingSpeak
+    // -----------------------------
+    function updateDashboardFromThingSpeak(data) {
+      const { fieldMapping } = THINGSPEAK_CONFIG;
+      const feeds = data.feeds || [];
+      const channel = data.channel || {};
+      if (!feeds.length) return;
+
+      const times = feeds.map((f) => timestampLabel(f));
+      const bodyTemps = feeds.map((f) => f[fieldMapping.bodyTemperature]);
+      const shedTemps = feeds.map((f) => f[fieldMapping.shedTemperature]);
+      const humidity = feeds.map((f) => f[fieldMapping.humidity]);
+      const airQuality = feeds.map((f) => f[fieldMapping.airQuality]);
+      const activity = feeds.map((f) => f[fieldMapping.activity]);
+      const animalIds = feeds.map((f) => f[fieldMapping.animalId] || null).filter(Boolean);
+
+      const statsBody = computeSeriesStats(bodyTemps);
+      const statsShed = computeSeriesStats(shedTemps);
+      const statsHumidity = computeSeriesStats(humidity);
+      const statsAir = computeSeriesStats(airQuality);
+      const statsActivity = computeSeriesStats(activity);
+
+      // Key labels from channel metadata
+      const bodyLabel = channel[fieldMapping.bodyTemperature] || "Average body temperature";
+      const shedLabel = channel[fieldMapping.shedTemperature] || "Shed temperature";
+      const humLabel = channel[fieldMapping.humidity] || "Humidity level";
+      const airLabel = channel[fieldMapping.airQuality] || "Air quality";
+
+      const labelBodyTemp = document.getElementById("labelBodyTemp");
+      const labelShedTemp = document.getElementById("labelShedTemp");
+      const labelHumidity = document.getElementById("labelHumidity");
+      const labelAirQuality = document.getElementById("labelAirQuality");
+      if (labelBodyTemp) labelBodyTemp.textContent = bodyLabel;
+      if (labelShedTemp) labelShedTemp.textContent = shedLabel;
+      if (labelHumidity) labelHumidity.textContent = humLabel;
+      if (labelAirQuality) labelAirQuality.textContent = airLabel;
+
+      const latestFeed = feeds[feeds.length - 1];
+      const latestTime = timestampLabel(latestFeed);
+
+      // Dashboard subtitle
+      const subtitle = document.getElementById("dashboardSubtitle");
+      if (subtitle) {
+        subtitle.textContent = "Last update from ThingSpeak: " + (latestTime || "just now");
+      }
+
+      // Total animals (unique ID count)
+      const uniqAnimals = Array.from(new Set(animalIds));
+      const totalAnimals = uniqAnimals.length || (feeds.length ? 1 : 0);
+      const metricTotalAnimals = document.getElementById("metricTotalAnimals");
+      if (metricTotalAnimals) metricTotalAnimals.textContent = totalAnimals || "--";
+
+      // Hero live animals
+      const heroLiveAnimals = document.getElementById("heroLiveAnimals");
+      if (heroLiveAnimals) {
+        heroLiveAnimals.textContent =
+          (totalAnimals ? totalAnimals + " animals under active monitoring" : "Monitoring active · Waiting for IDs") +
+          " · " +
+          (latestTime || "recent");
+      }
+
+      // Average body temp
+      const avgBody = statsBody.avg;
+      const latestBody = statsBody.latest;
+      const metricAvgBodyTemp = document.getElementById("metricAvgBodyTemp");
+      if (metricAvgBodyTemp) {
+        metricAvgBodyTemp.textContent =
+          avgBody !== null ? avgBody.toFixed(1) + " °C" : latestBody !== null ? latestBody.toFixed(1) + " °C" : "-- °C";
+      }
+
+      // Hero mini card for body temp
+      const heroBodyTemp = document.getElementById("heroBodyTemp");
+      if (heroBodyTemp) {
+        heroBodyTemp.textContent =
+          latestBody !== null ? latestBody.toFixed(1) + " °C" : avgBody !== null ? avgBody.toFixed(1) + " °C" : "-- °C";
+      }
+
+      // Humidity
+      const latestHum = statsHumidity.latest;
+      const metricHumidity = document.getElementById("metricHumidity");
+      if (metricHumidity) {
+        metricHumidity.textContent = latestHum !== null ? latestHum.toFixed(0) + " %" : "-- %";
+      }
+
+      // Air quality
+      const latestAir = statsAir.latest;
+      const metricAirQuality = document.getElementById("metricAirQuality");
+      const heroAirQuality = document.getElementById("heroAirQuality");
+      if (metricAirQuality) {
+        metricAirQuality.textContent = latestAir !== null ? latestAir.toFixed(0) : "--";
+      }
+      if (heroAirQuality) {
+        if (latestAir === null) {
+          heroAirQuality.textContent = "Waiting for sensor data";
+        } else if (latestAir < 40) {
+          heroAirQuality.textContent = "Fresh · Good air";
+        } else if (latestAir < 70) {
+          heroAirQuality.textContent = "Moderate · Monitor occasionally";
+        } else {
+          heroAirQuality.textContent = "Unhealthy · Improve ventilation";
+        }
+      }
+
+      // Shed temperature environment card
+      const latestShedTemp = statsShed.latest;
+      const envShedTemp = document.getElementById("envShedTemp");
+      const envShedTempText = document.getElementById("envShedTempText");
+      if (envShedTemp) {
+        envShedTemp.textContent = latestShedTemp !== null ? latestShedTemp.toFixed(1) + " °C" : "-- °C";
+      }
+
+      // Simple rule-based comfort evaluation
+      const envStatus = { temp: "Stable", tempClass: "ok", humidityText: "Comfortable", humidityClass: "ok" };
+      if (latestShedTemp !== null) {
+        if (latestShedTemp < 10) {
+          envStatus.temp = "Too cold · Consider warming shed";
+          envStatus.tempClass = "warn";
+        } else if (latestShedTemp > 32) {
+          envStatus.temp = "Too hot · High heat stress risk";
+          envStatus.tempClass = "danger";
+        } else if (latestShedTemp > 28) {
+          envStatus.temp = "Warm · Watch for heat stress";
+          envStatus.tempClass = "warn";
+        }
+      }
+      if (latestHum !== null) {
+        if (latestHum < 40) {
+          envStatus.humidityText = "Dry air · May irritate animals";
+          envStatus.humidityClass = "warn";
+        } else if (latestHum > 80) {
+          envStatus.humidityText = "Very humid · Higher disease risk";
+          envStatus.humidityClass = "danger";
+        } else if (latestHum > 70) {
+          envStatus.humidityText = "Humid · Monitor bedding & air flow";
+          envStatus.humidityClass = "warn";
+        }
+      }
+      if (envShedTempText) envShedTempText.textContent = envStatus.temp;
+
+      const envVent = document.getElementById("envVent");
+      const envVentText = document.getElementById("envVentText");
+      if (envVent) {
+        if (envStatus.tempClass === "danger" || envStatus.humidityClass === "danger") {
+          envVent.textContent = "Urgent";
+        } else if (envStatus.tempClass === "warn" || envStatus.humidityClass === "warn") {
+          envVent.textContent = "Needs attention";
+        } else {
+          envVent.textContent = "Balanced";
+        }
+      }
+      if (envVentText) {
+        if (envStatus.tempClass === "danger" || envStatus.humidityClass === "danger") {
+          envVentText.textContent = "High stress risk · Improve airflow & water access immediately.";
+        } else if (envStatus.tempClass === "warn" || envStatus.humidityClass === "warn") {
+          envVentText.textContent = "Adjust ventilation or shade to keep animals comfortable.";
+        } else {
+          envVentText.textContent = "Current shed conditions look comfortable for most cattle.";
+        }
+      }
+
+      // Status pills
+      function setStatusPill(id, cls, label) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.classList.remove("ok", "warn", "danger");
+        el.classList.add(cls);
+        el.textContent = "";
+        const dot = document.createElement("span");
+        dot.className = "status-dot";
+        el.appendChild(dot);
+        el.appendChild(document.createTextNode(" " + label));
+      }
+
+      // Body temp pill
+      if (avgBody !== null) {
+        if (avgBody < 37 || avgBody > 40) {
+          setStatusPill("statusAvgBodyTemp", "danger", "Possible fever / chill");
+        } else if (avgBody < 37.5 || avgBody > 39.5) {
+          setStatusPill("statusAvgBodyTemp", "warn", "Watch closely");
+        } else {
+          setStatusPill("statusAvgBodyTemp", "ok", "Within normal range");
+        }
+      }
+
+      // Humidity pill
+      if (latestHum !== null) {
+        if (envStatus.humidityClass === "danger") {
+          setStatusPill("statusHumidity", "danger", "Unhealthy humidity");
+        } else if (envStatus.humidityClass === "warn") {
+          setStatusPill("statusHumidity", "warn", "Monitor humidity");
+        } else {
+          setStatusPill("statusHumidity", "ok", "Comfortable");
+        }
+      }
+
+      // Air quality pill
+      if (latestAir !== null) {
+        if (latestAir > 70) {
+          setStatusPill("statusAirQuality", "danger", "Unhealthy · Ventilate now");
+        } else if (latestAir > 40) {
+          setStatusPill("statusAirQuality", "warn", "Moderate · Improve airflow");
+        } else {
+          setStatusPill("statusAirQuality", "ok", "Healthy air");
+        }
+      }
+
+      // Shed temp pill
+      if (latestShedTemp !== null) {
+        if (envStatus.tempClass === "danger") {
+          setStatusPill("statusShedTemp", "danger", "Heat / cold stress risk");
+        } else if (envStatus.tempClass === "warn") {
+          setStatusPill("statusShedTemp", "warn", "Adjust temperature");
+        } else {
+          setStatusPill("statusShedTemp", "ok", "Comfortable");
+        }
+      }
+
+      // Alerts list from simple rules
+      const alerts = [];
+      if (avgBody !== null && (avgBody > 39.5 || avgBody < 37.5)) {
+        alerts.push({
+          title: "Possible fever or chill detected",
+          animal: uniqAnimals[uniqAnimals.length - 1] || "Multiple animals",
+          detail:
+            "Average body temperature is outside the ideal range. Consider checking affected animals manually or consulting a vet.",
+          severity: "High",
+          time: latestTime,
+        });
+      }
+      if (latestAir !== null && latestAir > 70) {
+        alerts.push({
+          title: "Poor air quality detected in shed",
+          animal: "Whole shed",
+          detail:
+            "Gas sensor readings are high. Increase ventilation, remove wet bedding, and ensure fans are working.",
+          severity: "High",
+          time: latestTime,
+        });
+      }
+      if (latestHum !== null && latestHum > 80) {
+        alerts.push({
+          title: "Very humid conditions in shed",
+          animal: "Whole shed",
+          detail:
+            "High humidity encourages bacteria and hoof problems. Improve drainage and bedding and increase airflow.",
+          severity: "Medium",
+          time: latestTime,
+        });
+      }
+      if (statsActivity.avg !== null && statsActivity.avg < 20) {
+        alerts.push({
+          title: "Reduced movement detected",
+          animal: "Multiple animals",
+          detail:
+            "Average activity levels are lower than usual. Check if animals are lame, in heat stress, or if feeding patterns changed.",
+          severity: "Medium",
+          time: latestTime,
+        });
+      }
+
+      // Update alerts panel
+      const alertsList = document.getElementById("alertsList");
+      const metricAlerts = document.getElementById("metricAlerts");
+      const statusAlerts = document.getElementById("statusAlerts");
+      if (metricAlerts) metricAlerts.textContent = alerts.length;
+      if (statusAlerts) {
+        if (alerts.length === 0) {
+          setStatusPill("statusAlerts", "ok", "All clear");
+        } else if (alerts.some((a) => a.severity === "High")) {
+          setStatusPill("statusAlerts", "danger", "Attention needed");
+        } else {
+          setStatusPill("statusAlerts", "warn", "Review alerts");
+        }
+      }
+      if (alertsList) {
+        alertsList.innerHTML = "";
+        if (!alerts.length) {
+          const item = document.createElement("div");
+          item.className = "alert-item";
+          item.innerHTML = `
+            <div class="alert-header">
+              <div class="alert-main">
+                <span class="alert-icon">✓</span>
+                No active health alerts.
+              </div>
+              <div class="alert-level">
+                <span class="status-dot"></span>
+                Normal
+              </div>
+            </div>
+            <div class="alert-meta">
+              <span>Keep monitoring regularly to catch early warning signs.</span>
+              <span>Source: Simple AI rules</span>
+            </div>`;
+          alertsList.appendChild(item);
+        } else {
+          alerts.forEach((alert) => {
+            const item = document.createElement("div");
+            item.className = "alert-item";
+            item.innerHTML = `
+              <div class="alert-header">
+                <div class="alert-main">
+                  <span class="alert-icon">⚠</span>
+                  ${alert.title}
+                </div>
+                <div class="alert-level">
+                  <span class="status-dot"></span>
+                  ${alert.severity}
+                </div>
+              </div>
+              <div class="alert-meta">
+                <span>Animal / Area: ${alert.animal}</span>
+                <span>${alert.time || ""}</span>
+              </div>
+              <div class="muted" style="margin-top: 0.1rem;">${alert.detail}</div>`;
+            alertsList.appendChild(item);
+          });
+        }
+      }
+
+      // Animal table
+      const tableBody = document.getElementById("animalTableBody");
+      if (tableBody) {
+        tableBody.innerHTML = "";
+        const latestByAnimal = new Map();
+        feeds.forEach((f) => {
+          const id = f[fieldMapping.animalId] || "Unknown";
+          latestByAnimal.set(id, f);
+        });
+        if (!latestByAnimal.size) {
+          const row = document.createElement("tr");
+          const cell = document.createElement("td");
+          cell.colSpan = 5;
+          cell.className = "muted";
+          cell.textContent =
+            "No animal IDs found in the configured field. Adjust THINGSPEAK_CONFIG.fieldMapping.animalId if needed.";
+          row.appendChild(cell);
+          tableBody.appendChild(row);
+        } else {
+          Array.from(latestByAnimal.entries())
+            .slice(-6)
+            .forEach(([id, f]) => {
+              const temp = parseNumeric(f[fieldMapping.bodyTemperature]);
+              const act = parseNumeric(f[fieldMapping.activity]);
+              let healthClass = "ok";
+              let healthLabel = "Healthy";
+              if (temp !== null && (temp > 39.5 || temp < 37.5)) {
+                healthClass = "danger";
+                healthLabel = "High risk";
+              } else if (temp !== null && (temp > 39 || temp < 38)) {
+                healthClass = "warn";
+                healthLabel = "Monitor";
+              }
+              const row = document.createElement("tr");
+              row.innerHTML = `
+                <td>${id}</td>
+                <td>
+                  <span class="badge ${healthClass}">
+                    <span class="status-dot"></span>
+                    ${healthLabel}
+                  </span>
+                </td>
+                <td>${act !== null ? act.toFixed(0) + " %" : "—"}</td>
+                <td>${temp !== null ? temp.toFixed(1) + " °C" : "—"}</td>
+                <td>${timestampLabel(f)}</td>`;
+              tableBody.appendChild(row);
+            });
+        }
+      }
+
+      // Charts
+      if (chartHealthTrends) {
+        chartHealthTrends.data.labels = times;
+        chartHealthTrends.data.datasets[0].data = bodyTemps.map(parseNumeric);
+        chartHealthTrends.data.datasets[1].data = activity.map(parseNumeric);
+        chartHealthTrends.update();
+      }
+
+      // Health score (simple heuristic from alerts)
+      const maxScore = 100;
+      let score = maxScore;
+      alerts.forEach((a) => {
+        if (a.severity === "High") score -= 25;
+        else score -= 10;
+      });
+      if (score < 0) score = 0;
+      const analyticsHealthScore = document.getElementById("analyticsHealthScore");
+      if (analyticsHealthScore) analyticsHealthScore.textContent = score.toFixed(0) + "/100";
+      if (chartHealthScore) {
+        const labels = new Array(10).fill("");
+        const values = new Array(10).fill(Math.max(20, score));
+        chartHealthScore.data.labels = labels;
+        chartHealthScore.data.datasets[0].data = values;
+        chartHealthScore.update();
+      }
+
+      // Alert frequency chart (very simple: last N readings bucketed)
+      if (chartAlertFreq) {
+        const buckets = ["Low", "Medium", "High"];
+        const counts = [0, 0, 0];
+        alerts.forEach((a) => {
+          if (a.severity === "High") counts[2]++;
+          else counts[1]++;
+        });
+        chartAlertFreq.data.labels = buckets;
+        chartAlertFreq.data.datasets[0].data = counts;
+        chartAlertFreq.update();
+        const analyticsAlertFreq = document.getElementById("analyticsAlertFreq");
+        if (analyticsAlertFreq) {
+          const total = counts.reduce((a, b) => a + b, 0);
+          analyticsAlertFreq.textContent = total + " alerts";
+        }
+      }
+
+      // Trend text
+      const trendTempText = document.getElementById("trendTempText");
+      const trendTempChange = document.getElementById("trendTempChange");
+      const trendActivityText = document.getElementById("trendActivityText");
+      const trendActivityChange = document.getElementById("trendActivityChange");
+      const trendComfortText = document.getElementById("trendComfortText");
+      const trendComfortChange = document.getElementById("trendComfortChange");
+
+      if (trendTempText && bodyTemps.length > 3) {
+        const first = parseNumeric(bodyTemps[0]);
+        const last = parseNumeric(bodyTemps[bodyTemps.length - 1]);
+        if (first !== null && last !== null) {
+          const diff = last - first;
+          const msg =
+            diff > 0.3
+              ? "Cattle temperatures are rising. Watch for heat stress or infection."
+              : diff < -0.3
+              ? "Body temperatures are trending downward toward cooler values."
+              : "Body temperatures are fairly stable.";
+          trendTempText.textContent = msg;
+          if (trendTempChange) {
+            trendTempChange.textContent = (diff >= 0 ? "+" : "") + diff.toFixed(2) + " °C";
+          }
+        }
+      }
+      if (trendActivityText && activity.length > 3) {
+        const first = parseNumeric(activity[0]);
+        const last = parseNumeric(activity[activity.length - 1]);
+        if (first !== null && last !== null) {
+          const diff = last - first;
+          const msg =
+            diff < -5
+              ? "Activity is lower than before. Check for lameness, heat, or feeding changes."
+              : diff > 5
+              ? "Activity is increasing · can indicate good comfort or restlessness."
+              : "Activity is relatively steady.";
+          trendActivityText.textContent = msg;
+          if (trendActivityChange) {
+            trendActivityChange.textContent = (diff >= 0 ? "+" : "") + diff.toFixed(1) + " %";
+          }
+        }
+      }
+      if (trendComfortText && latestShedTemp !== null && latestHum !== null) {
+        const msg =
+          envStatus.tempClass === "danger" || envStatus.humidityClass === "danger"
+            ? "Comfort score is low. Act now to reduce heat, humidity or bad air."
+            : envStatus.tempClass === "warn" || envStatus.humidityClass === "warn"
+            ? "Comfort is moderate. A few adjustments can make animals more relaxed."
+            : "Comfort looks good. Keep monitoring and maintain current conditions.";
+        trendComfortText.textContent = msg;
+        if (trendComfortChange) {
+          trendComfortChange.textContent = score.toFixed(0) + "/100";
+        }
+      }
+    }
+
+    // -----------------------------
+    // Simple rule‑based AI assistant
+    // -----------------------------
+    function addChatMessage(content, role) {
+      const container = document.getElementById("chatMessages");
+      if (!container) return;
+      const bubble = document.createElement("div");
+      bubble.className = "chat-bubble " + (role === "user" ? "user" : "bot");
+      bubble.textContent = content;
+      container.appendChild(bubble);
+      container.scrollTop = container.scrollHeight;
+    }
+
+    function generateBotReply(question) {
+      const q = question.toLowerCase();
+
+      if (q.includes("less active") || q.includes("low activity") || q.includes("not moving")) {
+        return (
+          "If a cow is less active than usual, it can be a sign of lameness, heat stress, illness, or poor comfort in the shed. " +
+          "First, check for injuries to legs and hooves, make sure there is fresh water and feed, and look at the dashboard for any fever or poor air quality alerts. " +
+          "If the behaviour continues or you also see high temperature, contact your veterinarian."
+        );
+      }
+      if (q.includes("high temperature") || q.includes("fever")) {
+        return (
+          "High body temperature is usually an early sign of fever or heat stress. For adult cattle, temperatures much above about 39.5 °C are a concern. " +
+          "Move the animal to a shaded, well‑ventilated area with easy access to cool water, and avoid stressful handling. " +
+          "If fever stays high or the animal looks dull, call your vet for a proper diagnosis and treatment plan."
+        );
+      }
+      if (q.includes("improve") && (q.includes("shed") || q.includes("ventilation") || q.includes("conditions"))) {
+        return (
+          "To improve shed conditions, focus on three things: fresh air, dry bedding, and comfortable temperature. " +
+          "Open vents or windows to create gentle airflow without strong drafts, use fans if heat is high, and remove wet bedding regularly. " +
+          "Watch the humidity and air‑quality cards in the dashboard – aim for moderate humidity and low gas readings. " +
+          "Simple steps like raising fans, adding shade, and cleaning manure more often can significantly improve comfort."
+        );
+      }
+      if (q.includes("how often") && (q.includes("check") || q.includes("alerts"))) {
+        return (
+          "It’s a good habit to check alerts at least twice a day – for example, once in the morning and once in the evening. " +
+          "During very hot or humid weather, or when you know there is a disease risk in the area, check more frequently. " +
+          "The system updates automatically, so any new fever or air‑quality issues will be flagged for you as they appear."
+        );
+      }
+      if (q.includes("air quality") || q.includes("gas") || q.includes("smell")) {
+        return (
+          "Poor air quality in a cattle shed often comes from high ammonia and moisture. It can cause coughing, eye irritation, and higher disease risk. " +
+          "If the dashboard shows poor air quality, increase ventilation, remove wet bedding, scrape manure alleys more often, and make sure fans and inlets are clean. " +
+          "Try to keep the smell mild and avoid heavy, sharp odours near animal noses."
+        );
+      }
+      if (q.includes("humidity") || q.includes("wet") || q.includes("moisture")) {
+        return (
+          "Very high humidity makes the shed feel stuffy and helps germs survive in bedding and air. " +
+          "Keep gutters and drains clear, spread fresh dry bedding, and improve airflow to carry moisture out. " +
+          "If the humidity card is in yellow or red for many hours, adjust management before animals start showing health issues."
+        );
+      }
+
+      return (
+        "This assistant gives general farmer‑friendly guidance based on common cattle health and comfort practices. " +
+        "Check the dashboard cards for temperature, humidity, air quality, and activity, then:\n\n" +
+        "• If temperature or fever alerts are high: isolate the animal, provide shade and water, and call your vet.\n" +
+        "• If air or humidity are poor: increase ventilation, clean manure, and refresh bedding.\n" +
+        "• If movement is low: look for signs of lameness, heat stress, or changes in feed and water.\n\n" +
+        "For any serious or long‑lasting problem, always consult a local veterinarian."
+      );
+    }
+
+    function handleChatSubmit() {
+      const input = document.getElementById("chatInput");
+      if (!input || !input.value.trim()) return;
+      const text = input.value.trim();
+      addChatMessage(text, "user");
+      input.value = "";
+      setTimeout(() => {
+        const reply = generateBotReply(text);
+        addChatMessage(reply, "bot");
+      }, 350);
+    }
+
+    // -----------------------------
+    // Initialisation
+    // -----------------------------
+    function updateDateDisplays() {
+      const sidebarDate = document.getElementById("sidebarDate");
+      const footerYear = document.getElementById("footerYear");
+      const now = new Date();
+      if (sidebarDate) {
+        sidebarDate.textContent = now.toLocaleString(undefined, {
+          day: "2-digit",
+          month: "short",
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+      }
+      if (footerYear) footerYear.textContent = now.getFullYear();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      updateDateDisplays();
+      initCharts();
+      fetchThingSpeakData();
+      if (THINGSPEAK_CONFIG.refreshMs && THINGSPEAK_CONFIG.refreshMs > 0) {
+        setInterval(fetchThingSpeakData, THINGSPEAK_CONFIG.refreshMs);
+      }
+
+      const chatInput = document.getElementById("chatInput");
+      const chatSendBtn = document.getElementById("chatSendBtn");
+      if (chatInput) {
+        chatInput.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            handleChatSubmit();
+          }
+        });
+      }
+      if (chatSendBtn) chatSendBtn.addEventListener("click", handleChatSubmit);
+
+      document.querySelectorAll(".chat-suggestion").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const q = btn.getAttribute("data-question") || btn.textContent;
+          const input = document.getElementById("chatInput");
+          if (input) input.value = q;
+          handleChatSubmit();
+        });
+      });
+    });
   </script>
 </body>
 </html>
